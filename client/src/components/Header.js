@@ -1,23 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import StripeWrapper from './StripeWrapper';
 
 const Header = (props) => {
   const content = () => {
     switch (props.auth) {
-      case null:
+      case null: // initializing
         return null;
-      case false:
+      case false: // not logged in
         return (
           <li>
             <a href="/auth/google">Login with Google</a>
           </li>
         );
       default:
+        // logged in
         return (
-          <li>
-            <a href="/api/logout">Logout</a>
-          </li>
+          <>
+            <li>
+              <StripeWrapper />
+            </li>
+            <li style={{ margin: '0 10px' }}>Credits: {props.auth.credits}</li>
+            <li>
+              <a href="/api/logout">Logout</a>
+            </li>
+          </>
         );
     }
   };

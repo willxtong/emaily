@@ -5,3 +5,8 @@ export const fetchUser = () => async (dispatch) => {
   const { data } = await axios.get('/api/currentUser');
   dispatch({ type: FETCH_USER, data });
 };
+
+export const handleToken = (token) => async (dispatch) => {
+  const { data } = await axios.post('/api/stripe', token);
+  dispatch({ type: FETCH_USER, data });
+};

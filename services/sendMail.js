@@ -12,8 +12,7 @@ const sendMail = async (survey) => {
   const text = 'text';
   const from = 'willxtong@gmail.com';
   const html = surveyTemplate(survey);
-  const trackingSettings = { clickTracking: true };
-  const msg = { to, subject, html, from, text, trackingSettings };
+  const msg = { to, subject, html, from, text };
   await sgMail.send(msg);
 };
 

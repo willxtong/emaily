@@ -7,6 +7,9 @@ import reducers from './reducers';
 import 'materialize-css/dist/css/materialize.css';
 import reduxThunk from 'redux-thunk';
 
+import axios from 'axios';
+window.axios = axios;
+
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(

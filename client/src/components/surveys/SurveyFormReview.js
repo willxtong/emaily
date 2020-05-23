@@ -24,7 +24,7 @@ const SurveyFormReview = ({ formValues, history, onCancel, submitSurvey }) => {
         className="green white-text btn-flat right"
         onClick={() => submitSurvey(formValues, history)}>
         Send Survey
-        <i className="material-icons">email</i>
+        <i className="material-icons right">email</i>
       </button>
     </>
   );

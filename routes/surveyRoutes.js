@@ -8,6 +8,14 @@ const sendMail = require('../services/sendMail');
 const Survey = mongoose.model('surveys');
 
 module.exports = (app) => {
+  app.get('/api/surveys', requireLogin, async (req, res) => {
+    // get all surveys created by the current user, without the recipients field
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false
+    });
+    res.send(surveys);
+  });
+
   app.get('/api/surveys/:surveyId/:choice', (_req, res) => {
     res.send('Thanks for voting!'); // what the user sees after clicking any link in an email survey
   });
